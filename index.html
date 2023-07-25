@@ -4,63 +4,88 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <link rel="stylesheet" href="bootstrap.min.css">
-    <link rel="stylesheet" href="style.css">
+    <link rel="icon" type="img" href="img/bookmark.png">
+    <title>Bookmark</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Pacifico&family=Righteous&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+        integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="style/bootstrap.min.css">
+    <link rel="stylesheet" href="style/style.css">
 </head>
 
 <body>
-
-    <main class=" w-75 mx-auto">
-        <section class="bg-info p-3">
-            <div class="my-4">
-                <label for="ProductName" class="">ProductName:</label>
-                <input class="form-control" type="text" id="ProductName" placeholder="ProductName">
+    <main class="d-flex flex-column justify-content-center align-items-center text-center py-5">
+        <div class="container">
+            <div class="row">
+                <div class="col-12">
+                    <div class="text">
+                        <h1 class="mainText py-2 ">
+                            Bookmarker
+                        </h1>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="row">
+                <div class="col-12">
+                    <div class="bookmarkerBody p-3 py-4 mt-5">
+                        
+                        <h2 class="styleText ">
+                            <i class="fas fa-bookmark" style="color: #3fa55c !important;"></i>
+                            <span>Bookmark your favorite
+                                sites</span>
+                            <i class="fas fa-bookmark" style="color: #b2ac49 !important;"></i>
+                        </h2>
+                        <div id="alert" class="">
+                
+                        </div>
+                        <div class="site-name w-100 d-flex flex-column justify-content-center mt-5">
+                            <label for="bookmarkName" class="pb-2 fw-semibold text-start">
+                                <i class="fa-solid fa-book-bookmark pe-2"></i>
+                                Site Name</label>
+                            <input type="text" placeholder="Bookmark Name" class="form-control" id="bookmarkName" wfd-id="id0">
+                        </div>
+                        <div class="w-100 d-flex flex-column justify-content-center my-4">
+                            <label for="bookmarkURL" class="pb-2 fw-semibold text-start">
+                                <i class="fa-solid fa-link pe-2"></i>Site URL</label>
+                            <input type="url" placeholder="Website URL" class="form-control" id="bookmarkURL">
+                        </div>
+                        <button class="btn btn-submit px-5" id="submitBtn" onclick="addProduct()">Submit</button>
+                    </div>
+                </div>
             </div>
 
-            <div class="my-4">
-                <label for="ProductPrice:" class="">ProductPrice:</label>
-                <input class="form-control " type="number" id="ProductPrice" placeholder="ProductPrice">
+            <div class="row mt-5">
+                <div class="col-12">
+                    <div class="tableData">
+                        <table class="table">
+                            <thead>
+                                <tr>
+                                    <th>Index</th>
+                                    <th>Website Name</th>
+                                    <th>Visit</th>
+                                    <th>Delete</th>
+                                </tr>
+                            </thead>
+                            <tbody id="tbody" >
+                                
+                                
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
             </div>
-
-            <div class="my-4">
-                <label for="ProductCategory" class="">ProductCategory:</label>
-                <input class="form-control" type="text" id="ProductCategory" placeholder="ProductCategory">
-            </div>
-
-            <div class="my-4">
-                <label for="ProductDescription" class="">ProductDescription:</label>
-                <textarea class="form-control text" type="text" id="ProductDescription"
-                    placeholder="ProductDescription"></textarea>
-            </div>
-            <button class="btn btn-primary w-100" onclick=" display()">Add product</button>
-        </section>
-
-        <section class="mt-4 ">
-            <table class="table table-dark text-center">
-                <thead class="bg-black">
-                    <tr>
-                        <th scope="col">#index</th>
-                        <th scope="col">ProductName</th>
-                        <th scope="col">ProductPrice</th>
-                        <th scope="col">ProductCategory</th>
-                        <th scope="col">ProductDescription</th>
-                        <th scope="col" class="text-center">Action</th>
-                    </tr>
-                </thead>
-                <tbody id="tbody">
-                    
-            </table>
-        </section>
-
+            
+        </div>
     </main>
 
 
-    <script src="bootstrap.bundle.min.js"></script>
-    <script src="script.js"></script>
+
+    <script src="js/bootstrap.bundle.min.js"></script>
+    <script src="js/script.js"></script>
 </body>
 
 </html>
-
-
-

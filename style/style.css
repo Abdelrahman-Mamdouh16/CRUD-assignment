@@ -1,0 +1,84 @@
+* {
+    background-color: #f7ecde;
+}
+
+.mainText {
+    font-family: "Pacifico", cursive;
+    font-weight: 400;
+    font-size: 50px;
+    color: rgb(33, 37, 41);
+    isolation: isolate;
+    position: relative;
+}
+
+.mainText::after {
+    content: "";
+    width: 20%;
+    height: 25%;
+    left: 50%;
+    transform: translateX(-50%);
+    bottom: 10px;
+    z-index: -1;
+    position: absolute;
+    background-color: #fec260;
+    transition: all .5s;
+}
+
+.mainText:hover::after {
+    height: 45%;
+    /* transition: all 2s; */
+}
+
+.bookmarkerBody {
+    border-top: 2px dotted #352e28;
+    border-bottom: 2px dotted #352e28;
+}
+
+.bookmarkerBody .styleText {
+    font-family: "Righteous", cursive;
+    font-size: 25px;
+}
+
+.bookmarkerBody .styleText span {
+    background-image: linear-gradient(to right, #3ca55c, #b5ac49);
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.form-control:focus {
+    color: #212529;
+    background-color: #fff;
+    border-color: #d99c39;
+    outline: 0;
+    box-shadow: 0 0 0 0.25rem #fec26055;
+}
+
+.btn-submit {
+    --bs-btn-color: #fff;
+    --bs-btn-bg: #d1512d;
+    --bs-btn-border-color: #d1512d;
+    --bs-btn-hover-color: #fff;
+    --bs-btn-hover-bg: #bb4120;
+    --bs-btn-hover-border-color: #a03315;
+    font-weight: 500;
+}
+
+.myButton {
+    /* background-color: #3ca55c; */
+    color: #ffffff;
+    padding: 10px 20px;
+    font-size: 16px;
+    border: none;
+    cursor: pointer;
+}
+
+.myButton:active {
+    background-color: transparent !important;
+    color: black !important;
+    border: 1px solid black !important;
+    border-radius: 0.375rem;
+}
+.myButton i:active {
+    color: black;
+}
