@@ -28,11 +28,11 @@
                     </div>
                 </div>
             </div>
-            
+
             <div class="row">
                 <div class="col-12">
                     <div class="bookmarkerBody p-3 py-4 mt-5">
-                        
+
                         <h2 class="styleText ">
                             <i class="fas fa-bookmark" style="color: #3fa55c !important;"></i>
                             <span>Bookmark your favorite
@@ -40,19 +40,28 @@
                             <i class="fas fa-bookmark" style="color: #b2ac49 !important;"></i>
                         </h2>
                         <div id="alert" class="">
-                
+
                         </div>
                         <div class="site-name w-100 d-flex flex-column justify-content-center mt-5">
                             <label for="bookmarkName" class="pb-2 fw-semibold text-start">
                                 <i class="fa-solid fa-book-bookmark pe-2"></i>
                                 Site Name</label>
-                            <input type="text" placeholder="Bookmark Name" class="form-control" id="bookmarkName" wfd-id="id0">
+                            <input type="text" placeholder="Bookmark Name" class="form-control " id="bookmarkName"
+                                wfd-id="id0" oninput="validBookmarkName()">
+                                <div class="alert alert-danger d-none" id="bookmarkNameAlert" role="alert">
+                                    Bookmark Name must be 5 ~ 10 !
+                                </div>
                         </div>
+                        
                         <div class="w-100 d-flex flex-column justify-content-center my-4">
                             <label for="bookmarkURL" class="pb-2 fw-semibold text-start">
                                 <i class="fa-solid fa-link pe-2"></i>Site URL</label>
-                            <input type="url" placeholder="Website URL" class="form-control" id="bookmarkURL">
+                            <input type="url" placeholder="Website URL" class="form-control" id="bookmarkURL" oninput="validBookmarkURL()">
+                            <div class="alert alert-danger d-none" id="bookmarkURLAlert" role="alert">
+                                Bookmark URL must be Valid !
+                            </div>
                         </div>
+                        
                         <button class="btn btn-submit px-5" id="submitBtn" onclick="addProduct()">Submit</button>
                     </div>
                 </div>
@@ -70,15 +79,15 @@
                                     <th>Delete</th>
                                 </tr>
                             </thead>
-                            <tbody id="tbody" >
-                                
-                                
+                            <tbody id="tbody">
+
+
                             </tbody>
                         </table>
                     </div>
                 </div>
             </div>
-            
+
         </div>
     </main>
 
@@ -89,3 +98,16 @@
 </body>
 
 </html>
+
+<!-- if (validBookmarkName() == false || product.url == "") {
+    document.getElementById("bookmarkName").classList.remove("is-valid");
+    document.getElementById("bookmarkName").classList.remove("is-invalid");
+    document.getElementById("alert").classList.add("d-block")
+    document.getElementById("alert").classList.remove("d-none")
+
+    // clearData();
+} else if(validBookmarkName() == true || bookmarkName.value ==""){
+    productCounter.push(product);
+    document.getElementById("alert").classList.remove("d-block")
+    document.getElementById("alert").classList.add("d-none")
+} -->

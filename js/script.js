@@ -14,19 +14,36 @@ function addProduct() {
         name: bookmarkName.value.trim(),
         url: bookmarkURL.value,
     }
-    if (product.name == "" || product.name.length < 3 || product.url == "") {
+    // validText.test(text) == false||
+    if (product.name == "" || product.name.length < 3 || validBookmarkName()== false  || validBookmarkURL()== false ||product.url == "") {
         document.getElementById("alert").innerHTML = `<div class="alert alert-danger" role="alert">
         <span style="background-color: transparent;" class="d-block">Site name must contain at least 3 characters </span>
         <span style="background-color: transparent;" class="d-block">Site URL must be a valid one</span>
         </div>`;
-        // alert("");
+        document.getElementById("bookmarkName").classList.remove("is-valid");
+        document.getElementById("bookmarkName").classList.remove("is-invalid");
+        document.getElementById("bookmarkURL").classList.remove("is-valid");
+        document.getElementById("bookmarkURL").classList.remove("is-invalid");
+        document.querySelector("#bookmarkNameAlert").classList.add("d-none");
+        document.querySelector("#bookmarkNameAlert").classList.remove("d-block");
+        document.querySelector("#bookmarkURLAlert").classList.add("d-none");
+        document.querySelector("#bookmarkURLAlert").classList.remove("d-block");
+        clearData();
     } else {
         productCounter.push(product);
-        document.getElementById("alert").innerHTML ="";
+        document.getElementById("alert").innerHTML = "";
+        localStorage.setItem("products", JSON.stringify(productCounter));
+        displayData();
+        document.getElementById("bookmarkName").classList.remove("is-valid");
+        document.getElementById("bookmarkName").classList.remove("is-invalid");
+        document.getElementById("bookmarkURL").classList.remove("is-valid");
+        document.getElementById("bookmarkURL").classList.remove("is-invalid");
+        document.querySelector("#bookmarkNameAlert").classList.add("d-none");
+        document.querySelector("#bookmarkNameAlert").classList.remove("d-block");
+        document.querySelector("#bookmarkURLAlert").classList.add("d-none");
+        document.querySelector("#bookmarkURLAlert").classList.remove("d-block");
+        clearData();
     }
-    localStorage.setItem("products", JSON.stringify(productCounter));
-    displayData();
-    clearData();
 }
 
 function displayData() {
@@ -55,6 +72,7 @@ function displayData() {
         `
     }
     tbody.innerHTML = cartona;
+    clearData();
 }
 
 function clearData() {
@@ -66,4 +84,49 @@ function deleteData(index) {
     productCounter.splice(index, 1)
     localStorage.setItem("products", JSON.stringify(productCounter));
     displayData();
+}
+
+function validBookmarkName() {
+    var validText = /^[A-Z][a-z]{2,5}\s?([A-Z][a-z]{2,5})?$/;
+
+    var text = bookmarkName.value;
+
+
+
+
+    if (validText.test(text) == true) {
+        document.getElementById("bookmarkName").classList.add("is-valid");
+        document.getElementById("bookmarkName").classList.remove("is-invalid");
+        document.querySelector("#bookmarkNameAlert").classList.remove("d-none");
+        document.querySelector("#bookmarkNameAlert").classList.add("d-none");
+        document.getElementById("alert").innerHTML = "";
+        return true
+    } else if (validText.test(text) == false) {
+        document.getElementById("bookmarkName").classList.remove("is-valid");
+        document.getElementById("bookmarkName").classList.add("is-invalid");
+        document.querySelector("#bookmarkNameAlert").classList.add("d-block")
+        document.querySelector("#bookmarkNameAlert").classList.remove("d-none");
+        return false;
+    }
+}
+
+function validBookmarkURL(){
+    var validUrl = /\b(?:https?|ftp):\/\/[^\s/$.?#].[^\s]*\b/g;
+
+    var url =bookmarkURL.value;
+
+    if (validUrl.test(url) == true) {
+        document.getElementById("bookmarkURL").classList.add("is-valid");
+        document.getElementById("bookmarkURL").classList.remove("is-invalid");
+        document.querySelector("#bookmarkURLAlert").classList.remove("d-none");
+        document.querySelector("#bookmarkURLAlert").classList.add("d-none");
+        document.getElementById("alert").innerHTML = "";
+        return true
+    } else if (validUrl.test(url) == false) {
+        document.getElementById("bookmarkURL").classList.remove("is-valid");
+        document.getElementById("bookmarkURL").classList.add("is-invalid");
+        document.querySelector("#bookmarkURLAlert").classList.add("d-block")
+        document.querySelector("#bookmarkURLAlert").classList.remove("d-none");
+        return false;
+    }
 }
