@@ -3,7 +3,7 @@ var bookmarkURL = document.getElementById("bookmarkURL");
 var bookmarkNameAlert = document.querySelector("#bookmarkNameAlert");
 var bookmarkURLAlert = document.querySelector("#bookmarkURLAlert");
 var tbody = document.getElementById("tbody");
-var alter = document.getElementById("alert");
+var alert = document.getElementById("alert");
 
 productCounter = [];
 
@@ -18,7 +18,7 @@ function addProduct() {
         url: bookmarkURL.value,
     }
     if (product.name == "" || product.name.length < 3 || validBookmarkName() == false || validBookmarkURL() == false || product.url == "") {
-        alter.innerHTML = `<div class="alert alert-danger" role="alert">
+        alert.innerHTML = `<div class="alert alert-danger" role="alert">
         <span style="background-color: transparent;" class="d-block">Site name must contain at least 3 characters </span>
         <span style="background-color: transparent;" class="d-block">Site URL must be a valid one</span>
         </div>`;
@@ -104,10 +104,11 @@ function validBookmarkName() {
 }
 
 function validBookmarkURL() {
-    var validUrl = /\b(?:https?|ftp):\/\/[^\s/$.?#].[^\s]*\b/g;
+    var validUrl = /^\b(?:https?|ftp):\/\/[^\s/$.?#].[^\s]*\b$/g;
 
     var url = bookmarkURL.value;
-
+    console.log(url);
+    
     if (validUrl.test(url) == true) {
         bookmarkURL.classList.add("is-valid");
         bookmarkURL.classList.remove("is-invalid");
